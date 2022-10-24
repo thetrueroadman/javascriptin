@@ -21,7 +21,7 @@ function playRound() {
   let playerSelection = playerPrompt.toLowerCase();
   let computerSelection = getCompChoice();
 
-// 0 means tie, 1 means win, 2 means lose.
+  // 0 means tie, 1 means win, 2 means lose.
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
       return 0;
@@ -60,7 +60,14 @@ function playRound() {
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  for (let i = 0; i < 5; i++) {
+  let bestOfFive = 0;
+  while (bestOfFive === 0) {
+
+    if (playerScore === 5 || computerScore === 5) {
+      bestOfFive += 1;
+      break;
+    }
+
     let roundResult = playRound();
     switch (roundResult) {
       case 0:

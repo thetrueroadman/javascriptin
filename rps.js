@@ -17,40 +17,53 @@ function getCompChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  function win() {
+    return playerSelection + " beats " + computerSelection + ". You win!";
+  }
+
+  function lose() {
+    return computerSelection + " beats " + playerSelection + ". You lose...";
+  }
+
+  function tie() {
+    return "You both picked " + playerSelection + ". Draw!";
+  }
+
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
-      return "tie";
+      return tie();
     } else if (computerSelection == "paper") {
-      return "lose";
+      return lose();
     } else if (computerSelection == "scissors") {
-      return "win";
+      return win();
     }
   }
 
   if (playerSelection == "paper") {
     if (computerSelection == "rock") {
-      return "win";
+      return win();
     }
     if (computerSelection == "paper") {
-      return "tie";
+      return tie();
     }
     if (computerSelection == "scissors") {
-      return "lose";
+      return lose();
     }
   }
 
   if (playerSelection == "scissors") {
     if (computerSelection == "rock") {
-      return "lose";
+      return lose();
     }
     if (computerSelection == "paper") {
-      return "win";
+      return win();
     }
     if (computerSelection == "scissors") {
-      return "tie";
+      return tie();
     }
   }
 }
-const playerSelection = "rock";
+let playerPrompt = prompt("Rock, paper, or scissors?")
+const playerSelection = playerPrompt.toLowerCase();
 const computerSelection = getCompChoice();
 console.log(playRound(playerSelection, computerSelection));

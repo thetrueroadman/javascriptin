@@ -16,7 +16,11 @@ function getCompChoice() {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
+  let playerPrompt = prompt("Rock, paper, or scissors?")
+  let playerSelection = playerPrompt.toLowerCase();
+  let computerSelection = getCompChoice();
+
   function win() {
     return playerSelection + " beats " + computerSelection + ". You win!";
   }
@@ -63,7 +67,11 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
-let playerPrompt = prompt("Rock, paper, or scissors?")
-const playerSelection = playerPrompt.toLowerCase();
-const computerSelection = getCompChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    console.log(playRound());
+  }
+}
+
+game();

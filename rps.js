@@ -21,56 +21,66 @@ function playRound() {
   let playerSelection = playerPrompt.toLowerCase();
   let computerSelection = getCompChoice();
 
-  function win() {
-    return playerSelection + " beats " + computerSelection + ". You win!";
-  }
-
-  function lose() {
-    return computerSelection + " beats " + playerSelection + ". You lose...";
-  }
-
-  function tie() {
-    return "You both picked " + playerSelection + ". Draw!";
-  }
-
+// 0 means tie, 1 means win, 2 means lose.
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
-      return tie();
+      return 0;
     } else if (computerSelection == "paper") {
-      return lose();
+      return 2;
     } else if (computerSelection == "scissors") {
-      return win();
+      return 1;
     }
   }
 
   if (playerSelection == "paper") {
     if (computerSelection == "rock") {
-      return win();
+      return 1;
     }
     if (computerSelection == "paper") {
-      return tie();
+      return 0;
     }
     if (computerSelection == "scissors") {
-      return lose();
+      return 2;
     }
   }
 
   if (playerSelection == "scissors") {
     if (computerSelection == "rock") {
-      return lose();
+      return 2;
     }
     if (computerSelection == "paper") {
-      return win();
+      return 1;
     }
     if (computerSelection == "scissors") {
-      return tie();
+      return 0;
     }
   }
 }
 
 function game() {
+  let playerScore = 0;
+  let computerScore = 0;
   for (let i = 0; i < 5; i++) {
-    console.log(playRound());
+    let roundResult = playRound();
+    switch (roundResult) {
+      case 0:
+        console.log("Tie.");
+        console.log("Your score: " + playerScore);
+        console.log("Computer's score: " + computerScore);
+        break;
+      case 1:
+        console.log("Win");
+        playerScore += 1;
+        console.log("Your score: " + playerScore);
+        console.log("Computer's score: " + computerScore);
+        break;
+      case 2:
+        console.log("Fail");
+        computerScore += 1;
+        console.log("Your score: " + playerScore);
+        console.log("Computer's score: " + computerScore);
+        break;
+    }
   }
 }
 

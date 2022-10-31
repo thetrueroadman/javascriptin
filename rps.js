@@ -16,19 +16,17 @@ function getCompChoice() {
   }
 }
 
-function playRound() {
-  let playerPrompt = prompt("Rock, paper, or scissors?")
-  let playerSelection = playerPrompt.toLowerCase();
+function playRound(playerSelection) {
   let computerSelection = getCompChoice();
 
   // 0 means tie, 1 means win, 2 means lose.
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
-      return 0;
+      return 0
     } else if (computerSelection == "paper") {
-      return 2;
+      return 2
     } else if (computerSelection == "scissors") {
-      return 1;
+      return 1
     }
   }
 
@@ -57,38 +55,20 @@ function playRound() {
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let bestOfFive = 0;
-  while (bestOfFive === 0) {
+let rock = document.getElementById("rock");
 
-    if (playerScore === 5 || computerScore === 5) {
-      bestOfFive += 1;
-      break;
-    }
+rock.addEventListener("click", e => {
+  console.log(playRound("rock"));
+});
 
-    let roundResult = playRound();
-    switch (roundResult) {
-      case 0:
-        console.log("Tie.");
-        console.log("Your score: " + playerScore);
-        console.log("Computer's score: " + computerScore);
-        break;
-      case 1:
-        console.log("Win");
-        playerScore += 1;
-        console.log("Your score: " + playerScore);
-        console.log("Computer's score: " + computerScore);
-        break;
-      case 2:
-        console.log("Fail");
-        computerScore += 1;
-        console.log("Your score: " + playerScore);
-        console.log("Computer's score: " + computerScore);
-        break;
-    }
-  }
-}
+let paper = document.getElementById("paper");
 
-game();
+paper.addEventListener("click", e => {
+  console.log(playRound("paper"));
+});
+
+let scissors = document.getElementById("scissors");
+
+scissors.addEventListener("click", e => {
+  console.log(playRound("scissors"));
+});

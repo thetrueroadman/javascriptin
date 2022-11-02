@@ -34,3 +34,7 @@
   background-color: darkblue;
   color: white;
 }
+
+.buttons button:active {
+  transform: scale(0.9);
+}

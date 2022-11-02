@@ -15,42 +15,49 @@ function getCompChoice() {
       break;
   }
 }
-
+let playerScore = 0;
+let computerScore = 0;
 function playRound(playerSelection) {
   let computerSelection = getCompChoice();
 
   // 0 means tie, 1 means win, 2 means lose.
   if (playerSelection == "rock") {
     if (computerSelection == "rock") {
-      return 0
+      return "Tie";
     } else if (computerSelection == "paper") {
-      return 2
+      computerScore += 1;
+      return "Lose";
     } else if (computerSelection == "scissors") {
-      return 1
+      playerScore += 1;
+      return "Win";
     }
   }
 
   if (playerSelection == "paper") {
     if (computerSelection == "rock") {
-      return 1;
+      playerScore += 1;
+      return "Win";
     }
     if (computerSelection == "paper") {
-      return 0;
+      return "Tie";
     }
     if (computerSelection == "scissors") {
-      return 2;
+      computerScore += 1;
+      return "Lose";
     }
   }
 
   if (playerSelection == "scissors") {
     if (computerSelection == "rock") {
-      return 2;
+      computerScore += 1;
+      return "Lose";
     }
     if (computerSelection == "paper") {
-      return 1;
+      playerScore += 1;
+      return "Win";
     }
     if (computerSelection == "scissors") {
-      return 0;
+      return "Tie";
     }
   }
 }
@@ -59,6 +66,8 @@ let rock = document.getElementById("rock");
 
 rock.addEventListener("click", e => {
   console.log(playRound("rock"));
+  console.log("Your score: " + playerScore);
+  console.log("Computer's score: " + computerScore);
 });
 
 let paper = document.getElementById("paper");

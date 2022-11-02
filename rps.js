@@ -66,18 +66,22 @@ let rock = document.getElementById("rock");
 
 rock.addEventListener("click", e => {
   console.log(playRound("rock"));
-  console.log("Your score: " + playerScore);
-  console.log("Computer's score: " + computerScore);
+  document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+  document.getElementById("compScore").innerHTML = `Computer Score: ${computerScore}`;
 });
 
 let paper = document.getElementById("paper");
 
 paper.addEventListener("click", e => {
   console.log(playRound("paper"));
+  document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+  document.getElementById("compScore").innerHTML = `Computer Score: ${computerScore}`;
 });
 
 let scissors = document.getElementById("scissors");
 
 scissors.addEventListener("click", e => {
   console.log(playRound("scissors"));
+  document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+  document.getElementById("compScore").innerHTML = `Computer Score: ${computerScore}`;
 });

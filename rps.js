@@ -66,11 +66,19 @@ function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function isGameOver() {
+  return playerScore === 5 || computerScore === 5;
+}
+
 function outputSelect(buttonClick) {
   let computerSelection = getCompChoice();
-  let x = playRound(buttonClick, computerSelection);
   let ul = document.getElementById("output");
   let li = document.createElement("li");
+  if (isGameOver() == true) {
+    li.appendChild(document.createTextNode("The game is over. Refresh to play again!"));
+    ul.prepend(li);
+  } else {
+  let x = playRound(buttonClick, computerSelection);
   switch (x) {
     case 0:
       li.appendChild(document.createTextNode(`You both selected ${buttonClick}. Tie.`));
@@ -86,8 +94,10 @@ function outputSelect(buttonClick) {
       li.appendChild(document.createTextNode(outputLose));
       ul.prepend(li);
       break;
+    }
   }
 }
+
 let rock = document.getElementById("rock");
 
 rock.addEventListener("click", e => {

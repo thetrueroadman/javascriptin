@@ -1,8 +1,8 @@
 * {
-  border: 2px solid red;
   font-family: monospace;
 }
 .scores {
+  margin-top: 32px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -10,11 +10,12 @@
 }
 
 .buttons {
-  margin: auto;
+  margin: 0px 200px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 700px;
+  height: 600px;
+
 }
 
 .buttons button {
@@ -37,4 +38,22 @@
 
 .buttons button:active {
   transform: scale(0.9);
+}
+
+#output {
+  margin: 0px 200px;
+  overflow: scroll;
+  font-size: 24px;
+  height: 8em;
+  border: 2px solid gray;
+  text-align: center;
+}
+
+#output ul {
+  list-style-type: none;
+}
+
+#output li {
+  border-bottom: 2px solid lightgray;
+  padding: 16px;
 }
